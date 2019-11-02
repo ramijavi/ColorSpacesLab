@@ -25,9 +25,8 @@ function setup()
             index = ((i+(a*photo2.width))*4);
             
             photo2.pixels[index] = calculateInvertHue(photo2.pixels[index]);
-            //photo2.pixels[index+1];
-            //photo2.pixels[index+2];
-            //photo2.pixels[index+3] = 255;
+            photo2.pixels[index+1] = photo2.pixels[index+1]*1.2;
+            photo2.pixels[index+2] = photo2.pixels[index+2]*0.8;
         }
     }
     photo2.updatePixels();
@@ -59,9 +58,7 @@ function keyPressed()
 {
     if (!grayScale){
         grayScale = true;
-        photo.filter(GRAY);
     } else {
         grayScale = false;
-        photo.filter(INVERT);
     }
 }
