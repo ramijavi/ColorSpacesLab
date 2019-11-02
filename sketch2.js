@@ -1,12 +1,21 @@
 function setup()
 {
-    RGBtoHSB(228, 15, 246);
-    HSBtoRGB(295, 94, 96);
+    RGBtoHSB(28, 16, 82);
+    HSBtoRGB(251, 80, 32);
 }
 
 function draw()
 {   
     createCanvas(500,500);
+    
+    //Changing color mode to HSB
+    colorMode(HSB, 360, 100, 100);
+    
+    //Create square of color HSB(251, 80, 32)
+    fill(251, 80, 32);
+    square(0, 0 , 500);
+    
+    print(get(250,250));
 }
 
 //RGB to HSB conversion function
@@ -63,6 +72,7 @@ function RGBtoHSB(red, green, blue)
 }
 
 //HSB to RGB conversion function
+//Note: this function will not work if the hue value given is the maximum, i.e. 360 degrees. This is because the "i" value will then be 6, and there is no option specified for i=6 in the notes.
 function HSBtoRGB(hue, saturation, brightness){
     
     //Normalize input
@@ -74,11 +84,11 @@ function HSBtoRGB(hue, saturation, brightness){
     let i = Math.floor((3*h)/Math.PI);
     let f = ((3*h)/Math.PI) - i;
     
+    //Calculating RGB values
     let p = b * (1 - s);
     let q = b * (1 - (f*s));
     let t = b * (1 - ((1 - f)*s));
-    
-    
+   
     switch(i){
         case 0:
             printRGB(b,t,p);
@@ -99,6 +109,7 @@ function HSBtoRGB(hue, saturation, brightness){
             printRGB(b,p,q);
             break;
     }
+    
     //Function that prints result to console
     //Saves on writting repeated code
     function printRGB(r, g , b){
