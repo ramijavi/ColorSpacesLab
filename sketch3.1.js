@@ -35,9 +35,7 @@ function keyPressed()
 {
     if (!grayScale){
         grayScale = true;
-        photo.filter(GRAY);
     } else {
         grayScale = false;
-        photo.filter(INVERT);
     }
 }
