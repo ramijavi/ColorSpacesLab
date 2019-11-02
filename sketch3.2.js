@@ -22,6 +22,12 @@ function setup()
     for(let i=0; i<photo2.width; i++){
         for(let a=0; a<photo2.height; a++){
             
+            index = ((i+(a*photo2.width))*4);
+            
+            photo2.pixels[index] = calculateInvertHue(photo2.pixels[index]);
+            //photo2.pixels[index+1];
+            //photo2.pixels[index+2];
+            //photo2.pixels[index+3] = 255;
         }
     }
     photo2.updatePixels();
@@ -39,6 +45,14 @@ function draw()
     
     fill(0,0,0);
     circle(600,400,20);
+}
+
+function calculateInvertHue(h){
+    if (h<180){
+        return(h+180);
+    } else {
+        return(h-180);
+    }
 }
 
 function keyPressed()
